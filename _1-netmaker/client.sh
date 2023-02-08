@@ -2,7 +2,7 @@
 #Createing a new Netmaker node (client)
 
 updateAll(){
-   sudo apt update && sudo apt upgrade -y
+   (sudo apt update && sudo apt upgrade -y) > /dev/null 2>&1
 }
 
 reboot(){
@@ -10,7 +10,7 @@ reboot(){
 }
 
 turnoff(){
-    sudo shutdown now
+   sudo shutdown now
 }
 
 installation(){
@@ -21,7 +21,11 @@ sudo dnf install netclient
 sudo ip -br -c a
 }
 
-echo 'Step 1 - update the system'
-updateAll()
-  
-echo 'Installing Netmaker client'
+clear -x
+echo 'Start running script' $0
+echo ''
+echo 'Step 1 - updating the system'
+updateAll
+echo ''
+echo 'Step 2 - installing Netmaker client'
+installation

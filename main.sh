@@ -2,7 +2,7 @@
 #Createing a new Netmaker node (client)
 
 updateAll(){
-   (sudo apt update && sudo apt upgrade -y) > /dev/null 2>&1
+   sudo apt update && sudo apt upgrade -y
 }
 
 dockerComposeNginX(){
@@ -13,3 +13,5 @@ dockerComposeNginX(){
 
 updateAll
 dockerComposeNginX
+
+echo "sudo docker restart portainer"

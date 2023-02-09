@@ -10,3 +10,6 @@ dockerComposeNginX(){
    chmod +X install_docker_nproxyman.sh
    sudo bash install_docker_nproxyman.sh
 }
+
+updateAll
+dockerComposeNginX

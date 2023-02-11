@@ -50,9 +50,9 @@ echo -e "${FRAME}
 ###         ${style4}4. Installing Node.js${FRAME}                  ###
 ###         ${style5}5. Installing Docker${FRAME}                   ###
 ###         ${style6}6. Installing Docker Compose${FRAME}           ###
-###         ${style6}7. Docker STACK             ${FRAME}           ###
-###         ${style6}8. Add this machine to my VPN${FRAME}          ###
-###         ${style6}9. REBOOT                   ${FRAME}           ###
+###         ${style7}7. Docker STACK             ${FRAME}           ###
+###         ${style8}8. Add this machine to my VPN${FRAME}          ###
+###         ${style9}9. REBOOT                   ${FRAME}           ###
 ###                                                ###
 ###                                                ###
 ######################################################
@@ -239,14 +239,6 @@ if askQuestion "2 Would you like to install any soft? [y/n] ";
                bigSoftInstall > /dev/null 2>&1
             fi
             sudo apt --fix-broken install -y
-            style2=$DONE
-      fi
-      if askQuestion "2.4 Would you like install NodeJS? [y/n] "; then
-            if askQuestion "  2.4.1 Would you like to see the command output? [y/n] "; then
-               nodejsInstall
-               else
-               nodejsInstall > /dev/null 2>&1
-            fi
             style2=$DONE
       fi
    else

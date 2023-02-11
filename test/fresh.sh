@@ -29,12 +29,15 @@ style3=$li
 style4=$li
 style5=$li
 style6=$li
+style7=$li
+style8=$li
+style9=$li
 
 #============ FUNCTIONS BLOCK STARTS ===============#
 ###MAIN UI MENU###
 printMainMenu(){
 clear -x
-echo
+echo -e "${INFO}        myBashAutomationScript v0.1 (02/10/2023)"
 echo -e "${FRAME}
 ######################################################
 ######################################################
@@ -47,6 +50,9 @@ echo -e "${FRAME}
 ###         ${style4}4. Installing Node.js${FRAME}                  ###
 ###         ${style5}5. Installing Docker${FRAME}                   ###
 ###         ${style6}6. Installing Docker Compose${FRAME}           ###
+###         ${style6}7. Docker STACK             ${FRAME}           ###
+###         ${style6}8. Add this machine to my VPN${FRAME}          ###
+###         ${style6}9. REBOOT                   ${FRAME}           ###
 ###                                                ###
 ###                                                ###
 ######################################################
@@ -112,6 +118,39 @@ nodejsInstall(){
    echo -e "${LOG}" 
    sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt install -y nodejs
    echo -e "${li}"
+}
+
+dockerInstall(){
+   echo -e "${LOG}" 
+   sudo apt-get install ca-certificates curl gnupg lsb-release
+   sudo mkdir -p /etc/apt/keyrings
+   curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+   echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+   sudo apt update
+   sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin -y
+   echo -e "${li}"
+}
+
+dockerComposeInstall(){
+   sudo apt install docker-compose -y 
+}
+
+dockerComposeNginX(){
+   wget https://gitlab.com/bmcgonag/docker_installs/-/raw/main/install_docker_nproxyman.sh
+   chmod +X install_docker_nproxyman.sh
+   sudo bash install_docker_nproxyman.sh
+}
+
+vpn(){
+   sudo curl -sL 'https://apt.netmaker.org/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/netclient.asc
+   sudo curl -sL 'https://apt.netmaker.org/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/netclient.list
+   sudo apt update
+   sudo sudo apt install netclient -y
+   sudo ip -br -c a
+   echo 'Now you need to create a new acces key in Netmaker dashboard. And use provided command to join VPN'
+   echo 'Then add this node as Egress Node in Netmaker Dashboard using 192.168.10.0/24 and esn18 or simular'
 }
 
 nfs(){
@@ -228,6 +267,86 @@ if askQuestion "3 Would you like to setup LAN NAS ryzen? (!PRIVATE! - you do not
    else
       style3=$SKIP
 fi
+
+#RENDER 4: MENU + NodeJS
+style4=$ACTIVE
+printMainMenu
+if askQuestion "4 Would you like to install NodeJS LTS? [y/n] ";
+   then
+      nodejsInstall
+      style4=$DONE
+   else
+      style4=$SKIP
+fi
+
+#RENDER 5: MENU + Docker
+style5=$ACTIVE
+printMainMenu
+if askQuestion "5 Would you like to install Docker CE? [y/n] ";
+   then
+      dockerInstall
+      style5=$DONE
+   else
+      style5=$SKIP
+fi
+
+#RENDER 6: MENU + Docker Compose
+style6=$ACTIVE
+printMainMenu
+if askQuestion "6 Would you like to install Docker Compose? [y/n] ";
+   then
+      dockerComposeInstall
+      style6=$DONE
+   else
+      style6=$SKIP
+fi
+
+#RENDER 7: MENU + DOCKER DOCKER COMPOSE PORTAINER NGINX NAVIDROME
+style6=$ACTIVE
+printMainMenu
+if askQuestion "7 Would you like to install Docker, Docker Compose, Portainer, NginX and Navidrome? [y/n] ";
+   then
+      dockerComposeNginX
+      style6=$DONE
+   else
+      style6=$SKIP
+fi
+
+
+#RENDER 8: MENU + VPN
+style8=$ACTIVE
+printMainMenu
+updateSystem > /dev/null 2>&1
+if askQuestion "8 Would you like to add this machine to my VPN? [y/n] ";
+   then
+      vpn
+      style8=$DONE
+   else
+      style8=$SKIP
+fi
+
+
+#RENDER 9: MENU + REBOOT
+style9=$ACTIVE
+printMainMenu
+updateSystem > /dev/null 2>&1
+if askQuestion "9 Would you like to reboot this machine? [y/n] ";
+   then
+      sudo reboot
+      style9=$DONE
+   else
+      style9=$SKIP
+fi
+
+printMainMenu
+
+echo 'Everythig is DONE!'
+
+
+
+
+
+
 #============          END           ===============#
 
 

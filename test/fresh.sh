@@ -116,7 +116,7 @@ bigSoftInstall(){
 
 nodejsInstall(){
    echo -e "${LOG}" 
-   sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt install -y nodejs
+   sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs
    echo -e "${li}"
 }
 
@@ -241,6 +241,7 @@ if askQuestion "2 Would you like to install any soft? [y/n] ";
                else
                bigSoftInstall > /dev/null 2>&1
             fi
+            sudo apt --fix-broken install -y
             style2=$DONE
       fi
       if askQuestion "2.4 Would you like install NodeJS? [y/n] "; then
@@ -302,14 +303,14 @@ if askQuestion "6 Would you like to install Docker Compose? [y/n] ";
 fi
 
 #RENDER 7: MENU + DOCKER DOCKER COMPOSE PORTAINER NGINX NAVIDROME
-style6=$ACTIVE
+style7=$ACTIVE
 printMainMenu
 if askQuestion "7 Would you like to install Docker, Docker Compose, Portainer, NginX and Navidrome? [y/n] ";
    then
       dockerComposeNginX
-      style6=$DONE
+      style7=$DONE
    else
-      style6=$SKIP
+      style7=$SKIP
 fi
 
 

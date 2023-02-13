@@ -147,7 +147,7 @@ vpn(){
    sudo curl -sL 'https://apt.netmaker.org/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/netclient.asc
    sudo curl -sL 'https://apt.netmaker.org/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/netclient.list
    sudo apt update
-   sudo sudo apt install netclient -y
+   sudo apt install netclient -y
 }
 
 nfs(){
@@ -311,14 +311,15 @@ if askQuestion "8 Would you like to add this machine to my VPN? [y/n] ";
    then
       vpn
       style8=$DONE
+      clear -x
+      echo 'Now you need to create a new acces key in Netmaker dashboard. And use provided command to join VPN'
+      echo 'Then add this node as Egress Node in Netmaker Dashboard using 192.168.10.0/24 and esn18 or simular (from output below)'
+      sudo ip -br -c a
    else
       style8=$SKIP
 fi
 
-clear -x
-echo 'Now you need to create a new acces key in Netmaker dashboard. And use provided command to join VPN'
-echo 'Then add this node as Egress Node in Netmaker Dashboard using 192.168.10.0/24 and esn18 or simular (from output below)'
-sudo ip -br -c a
+
 
 if askQuestion "Are you ready for the next step? [y/n] ";
    then

@@ -87,9 +87,21 @@ gitlab(){
    sudo apt-get update
    sudo apt-get install -y curl openssh-server ca-certificates tzdata perl
    curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-   sudo EXTERNAL_URL="https://gitlab.app.kitqa.com" apt-get install gitlab-ce
+   sudo EXTERNAL_URL="http://gitlab.app.kitqa.com" apt-get install gitlab-ce
    echo -e "${li}"
 }
+
+gitlabRunner(){
+   echo -e "${LOG}" 
+   docker run -d --name gitlab-runner --restart always \
+  -v /srv/gitlab-runner/config:/etc/gitlab-runner \
+  -v /var/run/docker.sock:/var/run/docker.sock \
+  gitlab/gitlab-runner:latest
+
+   docker run --rm -it -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register
+   echo -e "${li}"
+}
+
 
 
 #============  FUNCTIONS BLOCK ENDS  ===============#
@@ -113,7 +125,7 @@ else
 style1=$SKIP
 fi
 
-#RENDER 2: MENU + PACKAGES
+#RENDER 2: MENU + GitLab
 style2=$ACTIVE
 printMainMenu
 
@@ -126,12 +138,12 @@ fi
 
 ######### template
 exit
-#RENDER 3: MENU + NFS
+#RENDER 3: MENU + GirLab Local Runners
 style3=$ACTIVE
 printMainMenu
-if askQuestion "3 Would you like to setup LAN NAS ryzen? (!PRIVATE! - you do not need it) [y/n] ";
+if askQuestion "3 Would you like to setup LAN GitLab Runner? [y/n] ";
    then
-      nfs
+      gitlabRunner
       style3=$DONE
    else
       style3=$SKIP

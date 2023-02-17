@@ -46,7 +46,7 @@ echo -e "${FRAME}
 ###                                                ###
 ###         ${style1}1. Updating system${FRAME}                     ###
 ###         ${style2}2. Installing gitLab CE${FRAME}             ###
-###         ${style3}3. AAA${FRAME}                         ###
+###         ${style3}3. Installing LAN GitLab Runner${FRAME}                         ###
 ###         ${style4}4. BBB${FRAME}                  ###
 ###         ${style5}5. CCC${FRAME}                   ###
 ###         ${style6}6. DDD${FRAME}           ###
@@ -137,7 +137,7 @@ if askQuestion "2 Would you like to install gitLab CE? [y/n] ";
 fi
 
 ######### template
-exit
+
 #RENDER 3: MENU + GirLab Local Runners
 style3=$ACTIVE
 printMainMenu
@@ -149,6 +149,7 @@ if askQuestion "3 Would you like to setup LAN GitLab Runner? [y/n] ";
       style3=$SKIP
 fi
 
+exit
 #RENDER 4: MENU + NodeJS
 style4=$ACTIVE
 printMainMenu

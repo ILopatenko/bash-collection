@@ -77,25 +77,25 @@
 printMainMenu(){
    clear -x
    echo ""
-   echo -e "${defbg}                                                                                ${bbg}"
-   echo -e "${defbg}                                                                                ${bbg}"
-   echo -e "${defbg}     ${frame}#####################################################################${defbg}      ${bbg}"
-   echo -e "${defbg}     ${frame}##${winbg}                                                                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                                                                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                                                                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style1} 1. Update and Upgrade your OS ${winbg}                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style2} 2. Setup Desktop/laptop ${winbg}                       ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style3} 3. Setup Server ${winbg}                               ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style4} 4. My personal settings ${winbg}                       ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style5} 5. Docker Stack ${winbg}                               ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style6} 6. Docker Soft ${winbg}                                ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                 ${style7} X. RESERVED ${winbg}                                   ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                                                                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                                                                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                                                                 ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}#####################################################################${defbg}      ${bbg}"
-   echo -e "${defbg}                                                                                ${bbg}"
-   echo -e "${defbg}                                                                                ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${defbg}     ${frame}#############################################${defbg}      ${bbg}"
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style1} 1. Update and Upgrade your OS ${winbg}     ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style2} 2. Setup Desktop/laptop ${winbg}           ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style3} 3. Setup Server ${winbg}                   ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style4} 4. My personal settings ${winbg}           ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style5} 5. Docker Stack ${winbg}                   ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style6} 6. Docker Soft ${winbg}                    ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style7} X. RESERVED ${winbg}                       ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}#############################################${defbg}      ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
    echo -e "${Color_Off}"
    sleep 1
 }
@@ -197,54 +197,55 @@ style2=$active
 printMainMenu
 
 #QUESTION 2
-if askQuestion "2 Would you like to setup your Desktop/Laptop that has Ubuntu/Linux Mint? [y/n] "; then
-      if askQuestion "  2.1 Would you like to install Slack, Zoom, VSCode, Chrome and NodeJS? [y/n] "; then
-            if askQuestion "     2.1.1 Would you like to install Slack, Zoom, VSCode, Chrome and NodeJS together? [y/n] "; then
-                  slack
-                  sleep 1
-                  clear -x
-                  zoom
-                  sleep 1
-                  clear -x
-                  vscode
-                  sleep 1
-                  clear -x
-                  chrome
-                  sleep 1
-                  clear -x
-                  nodejs
-                  sleep 1
-                  clear -x
-               else
-                  if askQuestion "        2.1.1.1 Would you like to install Slack? [y/n] "; then
-                        slack
-                  fi
-                  if askQuestion "        2.1.1.2 Would you like to install Zoom? [y/n] "; then
-                        zoom
-                  fi
-                  if askQuestion "        2.1.1.3 Would you like to install VSCode? [y/n] "; then
-                        vscode
-                  fi
-                  if askQuestion "        2.1.1.4 Would you like to install Chrome? [y/n] "; then
-                        chrome
-                  fi
-                  if askQuestion "        2.1.1.5 Would you like to install NodeJS? [y/n] "; then
-                        nodejs
-                  fi
-                  style2=$part
-            fi
-         else
-            style2=$part
-      fi
-      if askQuestion "2.2. Would you like to install qbittorrent and audacious? [y/n] "; then
-            desktop
-         else
-            style2=$part
-      fi
-   else
-      style2=$skipped
-fi
-
+{
+   if askQuestion "2 Would you like to setup your Desktop/Laptop that has Ubuntu/Linux Mint? [y/n] "; then
+         if askQuestion "  2.1 Would you like to install Slack, Zoom, VSCode, Chrome and NodeJS? [y/n] "; then
+               if askQuestion "     2.1.1 Would you like to install Slack, Zoom, VSCode, Chrome and NodeJS together? [y/n] "; then
+                     slack
+                     sleep 1
+                     clear -x
+                     zoom
+                     sleep 1
+                     clear -x
+                     vscode
+                     sleep 1
+                     clear -x
+                     chrome
+                     sleep 1
+                     clear -x
+                     nodejs
+                     sleep 1
+                     clear -x
+                  else
+                     if askQuestion "        2.1.1.1 Would you like to install Slack? [y/n] "; then
+                           slack
+                     fi
+                     if askQuestion "        2.1.1.2 Would you like to install Zoom? [y/n] "; then
+                           zoom
+                     fi
+                     if askQuestion "        2.1.1.3 Would you like to install VSCode? [y/n] "; then
+                           vscode
+                     fi
+                     if askQuestion "        2.1.1.4 Would you like to install Chrome? [y/n] "; then
+                           chrome
+                     fi
+                     if askQuestion "        2.1.1.5 Would you like to install NodeJS? [y/n] "; then
+                           nodejs
+                     fi
+                     style2=$part
+               fi
+            else
+               style2=$part
+         fi
+         if askQuestion "2.2. Would you like to install qbittorrent and audacious? [y/n] "; then
+               desktop
+            else
+               style2=$part
+         fi
+      else
+         style2=$skipped
+   fi
+}
 
 #RENDER MENU 3 - SERVER
 style3=$active

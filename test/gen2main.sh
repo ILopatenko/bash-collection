@@ -60,8 +60,9 @@
    part=${BIYellow}
    termQuestion=${BIYellow}
    termLogs=${default}
+   menuTitle=${BIYellow}
 
-   #CSS VARIABLES
+   #CSS VARIABLES MAIN MENU
    style1=${default}
    style2=${default}
    style3=${default}
@@ -69,8 +70,24 @@
    style5=${default}
    style6=${default}
    style7=${default}
-
-
+   
+   #CSS VARIABLES DESKTOP MENU MENU
+   style21=${default}
+   style22=${default}
+   style23=${default}
+   style24=${default}
+   style25=${default}
+   style26=${default}
+   style27=${default}
+   
+   #CSS VARIABLES DESKTOP MENU MENU
+   style31=${default}
+   style32=${default}
+   style33=${default}
+   style34=${default}
+   style35=${default}
+   style36=${default}
+   style37=${default}
 }
 
 #MAIN MENU RENDER
@@ -81,16 +98,40 @@ printMainMenu(){
    echo -e "${defbg}                                                        ${bbg}"
    echo -e "${defbg}     ${frame}#############################################${defbg}      ${bbg}"
    echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}              ${menuTitle}MAIN MENU:                 ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}     ${style1} 1. Update and Upgrade your OS ${winbg}     ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}     ${style2} 2. Setup Desktop/laptop ${winbg}           ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}     ${style3} 3. Setup Server ${winbg}                   ${frame}##${defbg}      "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}     ${style4} 4. My personal settings ${winbg}           ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style4} 4. My personal NFS Ryzen ${winbg}          ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}     ${style5} 5. Docker Stack ${winbg}                   ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}     ${style6} 6. Docker Soft ${winbg}                    ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}     ${style7} X. RESERVED ${winbg}                       ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}#############################################${defbg}      ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${Color_Off}"
+   sleep 1
+}
+
+#SUBMENU DESKTOP/LAPTOP RENDER
+printDesktopMenu(){
+   clear -x
+   echo ""
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${defbg}                                                        ${bbg}"
+   echo -e "${defbg}     ${frame}#############################################${defbg}      ${bbg}"
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}        ${menuTitle}2. Setup Desktop/Laptop:         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style21} 2.1. Slack, Zoom, Chrome ${winbg}          ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style22} 2.2. VSCode and NodeJS ${winbg}            ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style23} 2.3. QBitTorrent and Audacious ${winbg}    ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style24} 2.4. Common tools ${winbg}                 ${frame}##${defbg}      "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}     ${style27} 2.X. RESERVED ${winbg}                     ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                         ${frame}##${defbg}      "${bbg}
    echo -e "${defbg}     ${frame}#############################################${defbg}      ${bbg}"
@@ -161,12 +202,60 @@ updateSystem(){
       echo -e "${Color_Off}"
    }
 
-   desktop(){ 
+   qbitAuda(){ 
       echo -e "${termLogs}"
       sudo apt install qbittorrent audacious -y
       echo -e "${Color_Off}"
    }
+   mainAppsInstall(){
+      echo -e "${LOG}" 
+      sudo apt install openssh-server git nano wget tar htop nfs-common p7zip-full gpg -y
+      echo -e "${Color_Off}"
+   }
 
+   nfs(){
+      echo -e "${termLogs}"
+      if [ -d "/media/ryzen4ter" ]
+         then
+            echo "/media/ryzen4ter exists"
+         else
+            echo "/media/ryzen4ter does not exist - trying to create ..."
+            sudo mkdir /media/ryzen4ter
+            if [ -d "/media/ryzen4ter" ]
+               then
+                  echo "/media/ryzen4ter was created!"
+               else
+                  echo "!ERROR! /media/ryzen4ter was not created"
+            fi
+      fi
+      if [ -d "/media/ryzen2ter" ]
+         then
+            echo "/media/ryzen2ter exists"
+         else
+            echo "/media/ryzen2ter does not exist - trying to create ..."
+            sudo mkdir /media/ryzen2ter
+            if [ -d "/media/ryzen2ter" ]
+               then
+                  echo "/media/ryzen2ter was created!"
+               else
+                  echo "!ERROR! /media/ryzen2ter was nor created"
+            fi
+      fi
+
+      sudo echo "#AUTOMOUNT NFS SHARE trueNAS ryzen server" >> /etc/fstab
+      sudo echo "192.168.0.201:/mnt/ryzen2ter/dataSetRyzen2ter /media/ryzen2ter nfs defaults 0 0" >> /etc/fstab
+      sudo echo "192.168.0.201:/mnt/ryzen4ter/dataSetRyzen4ter /media/ryzen4ter nfs defaults 0 0" >> /etc/fstab
+
+      echo -e "${Color_Off}"
+   }
+
+   dockerComposeNginX(){
+      echo -e "${termLogs}"
+      wget https://gitlab.com/bmcgonag/docker_installs/-/raw/main/install_docker_nproxyman.sh
+      chmod +X install_docker_nproxyman.sh
+      sudo bash install_docker_nproxyman.sh
+      echo -e "${Color_Off}"
+   }
 
 }
 
@@ -180,7 +269,6 @@ printMainMenu
 {
    if askQuestion "1. Would you like to update and upgrade this system? [y/n] "; then
       if askQuestion "  1.1. Would you like to see the command output? [y/n] "; then
-         
          updateSystem
       else
          updateSystem > /dev/null 2>&1
@@ -191,57 +279,95 @@ printMainMenu
    fi
 }
 
-
 #RENDER MENU 2 - DESKTOP/LAPTOP
 style2=$active
 printMainMenu
 
 #QUESTION 2
 {
-   if askQuestion "2 Would you like to setup your Desktop/Laptop that has Ubuntu/Linux Mint? [y/n] "; then
-         if askQuestion "  2.1 Would you like to install Slack, Zoom, VSCode, Chrome and NodeJS? [y/n] "; then
-               if askQuestion "     2.1.1 Would you like to install Slack, Zoom, VSCode, Chrome and NodeJS together? [y/n] "; then
-                     slack
-                     sleep 1
-                     clear -x
-                     zoom
-                     sleep 1
-                     clear -x
-                     vscode
-                     sleep 1
-                     clear -x
-                     chrome
-                     sleep 1
-                     clear -x
-                     nodejs
-                     sleep 1
-                     clear -x
-                  else
-                     if askQuestion "        2.1.1.1 Would you like to install Slack? [y/n] "; then
-                           slack
-                     fi
-                     if askQuestion "        2.1.1.2 Would you like to install Zoom? [y/n] "; then
-                           zoom
-                     fi
-                     if askQuestion "        2.1.1.3 Would you like to install VSCode? [y/n] "; then
-                           vscode
-                     fi
-                     if askQuestion "        2.1.1.4 Would you like to install Chrome? [y/n] "; then
-                           chrome
-                     fi
-                     if askQuestion "        2.1.1.5 Would you like to install NodeJS? [y/n] "; then
-                           nodejs
-                     fi
-                     style2=$part
+   if askQuestion "2. Would you like to setup your Desktop/Laptop that has Ubuntu/Linux Mint? [y/n] "; then
+      style21=$active
+      printDesktopMenu
+      if askQuestion "  2.1. Would you like to install Slack, Zoom and Chrome? [y/n] "; then
+         if askQuestion "     2.1.1. Would you like to install Slack, Zoom and Chrome together? [y/n] "; then
+               slack
+               sleep 1
+               clear -x
+               zoom
+               sleep 1
+               clear -x
+               chrome
+               sleep 1
+               clear -x
+               style21=$success
+            else
+               if askQuestion "        2.1.1.1 Would you like to install Slack? [y/n] "; then
+                  slack
                fi
-            else
+               if askQuestion "        2.1.1.2 Would you like to install Zoom? [y/n] "; then
+                  zoom
+               fi
+               if askQuestion "        2.1.1.4 Would you like to install Chrome? [y/n] "; then
+                  chrome
+               fi
+               style21=$part
                style2=$part
          fi
-         if askQuestion "2.2. Would you like to install qbittorrent and audacious? [y/n] "; then
-               desktop
+         else
+            style21=$skipped
+      fi
+      style22=$active
+      printDesktopMenu
+      if askQuestion "  2.2. Would you like to install VSCode and NodeJS? [y/n] "; then
+         if askQuestion "     2.2.1. Would you like to install VSCode and NodeJS together? [y/n] "; then
+               vscode
+               sleep 1
+               clear -x
+               nodejs
+               sleep 1
+               clear -x
+               style22=$success
             else
+               if askQuestion "        2.2.1.1 Would you like to install VSCode? [y/n] "; then
+                  vscode
+               fi
+               if askQuestion "        2.2.1.2 Would you like to install NodeJS? [y/n] "; then
+                  nodejs
+               fi
+               style22=$part
                style2=$part
          fi
+         else
+            style22=$skipped
+      fi
+      style23=$active
+      printDesktopMenu
+      if askQuestion "  2.3. Would you like to install QBitTorrent and Audacious? [y/n] "; then
+         if askQuestion "     2.3.1. Would you like to install QBitTorrent and Audacious together? [y/n] "; then
+               qbitAuda
+               style23=$success
+            else
+               if askQuestion "        2.3.1.1 Would you like to install QBitTorrent? [y/n] "; then
+                  sudo apt install qbittorrent -y
+               fi
+               if askQuestion "        2.3.1.2 Would you like to install Audacious? [y/n] "; then
+                  sudo apt install audacious -y
+               fi
+               style23=$part
+               style2=$part
+         fi
+         else
+            style23=$skipped
+      fi
+      style24=$active
+      printDesktopMenu
+      if askQuestion "  2.4. Would you like to install openssh-server, git, nano, wget, tar, htop, nfs-common, p7zip-full and gpg? [y/n] "; then
+         mainAppsInstall
+         style24=$success
+         else
+            style24=$skipped
+      fi
+      style2=$part
       else
          style2=$skipped
    fi
@@ -250,3 +376,50 @@ printMainMenu
 #RENDER MENU 3 - SERVER
 style3=$active
 printMainMenu
+
+{
+   if askQuestion "3. Would you like to install ther most common server tools? [y/n] "; then
+         mainAppsInstall
+         style3=$success
+      else
+         style3=$skipped
+   fi
+}
+
+#RENDER MENU 4 - PERSONAL SETTINGS
+style4=$active
+printMainMenu
+
+{
+   if askQuestion "4. Would you like to setup automount my local NFS Ryzen? [y/n] "; then
+      nfs
+      style4=$success
+   else
+      style4=$skipped
+   fi
+}
+
+#RENDER MENU 5 - DOCKER STACK
+style5=$active
+printMainMenu
+
+{
+   if askQuestion "5. Would you like to install Docker Stack (opensourceisawesome.com)? [y/n] "; then
+      dockerComposeNginX
+      style5=$part
+   else
+      style5=$skipped
+   fi
+}
+
+#RENDER MENU 6 - DOCKER SOFT
+style6=$active
+printMainMenu
+
+{
+   if askQuestion "6. Would you like to install Docker Soft? [y/n] "; then
+      style6=$part
+   else
+      style6=$skipped
+   fi
+}

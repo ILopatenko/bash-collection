@@ -163,7 +163,7 @@ nfs(){
                echo "/media/ryzen4ter was created!"
             else
                echo -e "${SKIP}"
-               echo "!ERROR! /media/ryzen4ter was nor created"
+               echo "!ERROR! /media/ryzen4ter was not created"
                echo -e "${LOG}"
          fi
    fi

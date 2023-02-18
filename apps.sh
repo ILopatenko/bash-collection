@@ -87,7 +87,7 @@ gitlab(){
    sudo apt-get update
    sudo apt-get install -y curl openssh-server ca-certificates tzdata perl
    curl -s https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
-   sudo EXTERNAL_URL="https://gitlab.app.kitqa.com" apt-get install gitlab-ce
+   sudo EXTERNAL_URL="http://gitlab.app.kitqa.com" apt-get install gitlab-ce
    echo -e "${li}"
 }
 

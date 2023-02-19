@@ -1,4 +1,0 @@
-Create a new instance
-Download keys
-Use 01-preconditions.sh script to prepare ssh
-then Use hints from terminal

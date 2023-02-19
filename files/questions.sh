@@ -17,6 +17,17 @@ askQuestion(){
    echo -e "${Color_Off}"
 }
 
+userInputAndConfirmationserverIP(){
+   echo -e "${termQuestion}"
+   read -p 'Enter server IP: ' serverIP
+   if askQuestion "Does your server have IP $serverIP? [y/n] "; then
+      echo -e "${success}OK. Confirmed. Server IP is $serverIP ${Color_Off}"
+   else
+      echo -e "${skipped}NO. Enter your server IP${Color_Off}"
+      userInputAndConfirmation
+   fi
+}
+
 #UPDATE && UPGRADE
 askFullUpdateQ(){
    if askQuestion "0. Do you want to update and upgrade your machine? [y/n] "; then

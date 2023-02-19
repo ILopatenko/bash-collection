@@ -2,6 +2,7 @@
 #ORACLE submenu Module
 
 source ./../menu.sh
+source ./files/questtions.sh
 
 useOracleSubMenu(){
    style11=$active
@@ -25,12 +26,9 @@ oraclePreconditionsQ(){
 
 
 sshPreparing(){
-   clear -x
    home="/home/slon"
    privateKeyName=$(find ../../ -name *.key)
-   echo ""
-   read -p 'Enter server IP: ' serverIP
-   echo ""
+   userInputAndConfirmationserverIP
 
    echo "Your workDir is '$home'"
    echo "Your server IP is '$serverIP'"

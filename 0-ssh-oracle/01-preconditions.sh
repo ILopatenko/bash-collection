@@ -103,20 +103,20 @@ else
     echo "ERROR! CAN NOT CREATE known_hosts file"
 fi
 fi 
-
+clear -x
 echo ""
 echo 'SO FAR SO GOOD!'
-echo 'It looks like we are ready to make a first connection to a server!'
-echo ""
 echo "STEP #1: connect to a server"
 echo "ssh-add -D && ssh ubuntu@$serverIP"
 echo ""
 echo "STEP #2: root user"
 echo "sudo -i"
+echo ""
 echo "STEP #3: setup a swap file"
 echo "fallocate -l 2048M /root/swapfile && ls -lh /root/swapfile && chmod 600 /root/swapfile && mkswap /root/swapfile && swapon /root/swapfile && echo "/root/swapfile none swap sw 0 0" >> /etc/fstab"
 echo ""
 echo "STEP #4: install some packages, update, upgrade and reboot a system"
-echo "apt update -y && apt install nano wget git tar unzip htop -y && apt update -y && apt upgrade -y && sudo reboot"
+echo "git clone https://github.com/ilopatenko/bash-collection"
+echo "bash bash-collection/index.sh"
 
 

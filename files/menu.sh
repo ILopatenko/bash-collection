@@ -41,12 +41,10 @@ printOracleSuBMenu(){
    echo -e "${defbg}     ${frame}##${winbg}            ${menuTitle}ORACLE MENU:             ${frame}##${defbg}     "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                     ${frame}##${defbg}     "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}  ${style11} 1.1. Preconditions for SSH ${winbg}       ${frame}##${defbg}     "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}  ${style12} 1.2. Setup Desktop/laptop ${winbg}        ${frame}##${defbg}     "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}  ${style13} 1.3. Setup Server ${winbg}                ${frame}##${defbg}     "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}  ${style14} 1.4. My personal NFS Ryzen ${winbg}       ${frame}##${defbg}     "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}  ${style15} 1.5. Docker Stack ${winbg}                ${frame}##${defbg}     "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}  ${style16} 1.6. Docker Soft ${winbg}                 ${frame}##${defbg}     "${bbg}
-   echo -e "${defbg}     ${frame}##${winbg}  ${style17} 1.X. RESERVED ${winbg}                    ${frame}##${defbg}     "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}  ${style12} 1.2. Initial setup ${winbg}               ${frame}##${defbg}     "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}  ${style13} 1.3. Netmaker Server ${winbg}             ${frame}##${defbg}     "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}  ${style14} 1.4. NginX server ${winbg}                ${frame}##${defbg}     "${bbg}
+   echo -e "${defbg}     ${frame}##${winbg}  ${style15} 1.X. RESERVED ${winbg}                    ${frame}##${defbg}     "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                     ${frame}##${defbg}     "${bbg}
    echo -e "${defbg}     ${frame}##${winbg}                                     ${frame}##${defbg}     "${bbg}
    echo -e "${defbg}     ${frame}#########################################${defbg}     ${bbg}"

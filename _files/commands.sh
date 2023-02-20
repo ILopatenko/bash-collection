@@ -131,7 +131,7 @@ oraclessh(){
    fi 
 
    clear -x
-   echo "Use these commands: "
+   echo "Open a new terminal and use these commands: "
    echo ""
    echo "ssh-add -D && ssh ubuntu@$serverIP"
    echo ""
@@ -139,7 +139,7 @@ oraclessh(){
    echo ""
    echo "git clone https://github.com/ilopatenko/bash-collection"
    echo ""
-   echo "./bash-collection/index.sh"
+   echo "cd bash-collection && bash ./index.sh"
 }
 
 oracleFirstCommands(){

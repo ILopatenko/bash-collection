@@ -12,7 +12,7 @@ oracleBranch(){
 
    sl22=${active}
    printOracleMenu
-   askOraclePrepareSSH
+   oracleFirstCommands
 
    sl23=${active}
    printOracleMenu

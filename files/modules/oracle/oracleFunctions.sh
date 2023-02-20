@@ -22,7 +22,8 @@ prepareSSH(){
    home="/home/slon"
    echo (ls | grep key)
    privateKeyName=$(find . *.key)
-   userInputAndConfirmationserverIP
+   read -p 'Enter server IP: ' serverIP
+
 
    echo "Your workDir is '$home'"
    echo "Your server IP is '$serverIP'"

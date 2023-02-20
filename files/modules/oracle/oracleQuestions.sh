@@ -3,8 +3,8 @@
 
 source ./files/helpers/colors.sh
 source ./files/helpers/functions.sh
-source ./files/helpers/modules/oracle/oracle.sh
-source ./files/helpers/modules/oracle/oracleFunctions.sh
+source ./files/modules/oracle/oracleFunctions.sh
+
 
 
 oraclePreconditionsQ(){

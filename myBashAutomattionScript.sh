@@ -5,7 +5,8 @@
 source ./files/helpers/colors.sh
 source ./files/helpers/menu.sh
 source ./files/helpers/questions.sh
-source ./files/helpers/modules/oracle/oracleMain.sh
+source ./files/modules/oracle/oracleMain.sh
+source ./files/modules/oracle/oracleFunctions.sh
 
 
 #RENDER 1 - UDDATE AND UPGRADE

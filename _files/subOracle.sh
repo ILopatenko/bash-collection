@@ -12,7 +12,7 @@ oracleBranch(){
 
    sl22=${active}
    printOracleMenu
-   oracleFirstCommands
+   askOracleFirstCommands
 
    sl23=${active}
    printOracleMenu

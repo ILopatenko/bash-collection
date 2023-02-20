@@ -35,14 +35,13 @@ dockerStack(){
 
 oraclessh(){
    home="/home/slon"
-   echo $(ls | grep key)
-   privateKeyName=$(find . *.key)
-   read -p 'Enter server IP: ' serverIP
+   privateKeyName=$(ls | grep key)
+   read -p "Enter server IP: " serverIP
 
 
-   echo "Your workDir is '$home'"
-   echo "Your server IP is '$serverIP'"
-   echo "Your key is '$privateKeyName'"
+   echo "Your workDir is $home"
+   echo "Your server IP is $serverIP"
+   echo "Your key is $privateKeyName"
 
    #1 Folder /.ssh
    #Check if $home/.ssh exists
@@ -67,7 +66,7 @@ oraclessh(){
    #2 Rename and copy private server key to a new folder
    #2.1 Check if a key exists
    echo ""
-   if [ -f "../../$privateKeyName" ]; then 
+   if [ -f "$privateKeyName" ]; then 
       #CASE a key exists in start folder
       echo "The private key was found"
       #2.2 copy and rename a key to .ssh folder

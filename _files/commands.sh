@@ -1,26 +1,41 @@
 #!/bin/bash
-#ORACLE FUNCTIONS MAIN MODULE
-
-source ./files/helpers/colors.sh
-source ./files/helpers/functions.sh
-source ./files/helpers/modules/oracle/oracle.sh
+#COMMANDS MODULE
 
 
-oraclePreconditionsQ(){
-   if askQuestion "  1.1. Do you want to prepare SSH keys for your Oracle server? [y/n] "; then
-      echo -e "${don}  OK. You want to prepare SSH keys for your Oracle server ...${Drop}"
-      echo "sshPreparing"
-      sl21=$don
-   else
-      stl21=$skp
-      echo -e "${skp}  NO. You don't want to setup your Oracle server ... - let's go the next step ...${Drop}"
-   fi
+update(){
+   sudo apt update
 }
 
+upgrade(){
+   sudo apt upgrade -y
+}
 
-prepareSSH(){
+updateSilent(){
+   update > /dev/null 2>&1 
+}
+
+upgradeSilent(){
+   upgrade > /dev/null 2>&1 
+}
+
+fullUpdateUpgrade(){
+   update
+   upgrade
+}
+
+fullUpdateUpgradeSilent(){
+   fullUpdateUpgrade > /dev/null 2>&1
+}
+
+dockerStack(){
+   wget https://gitlab.com/bmcgonag/docker_installs/-/raw/main/install_docker_nproxyman.sh
+   chmod +X install_docker_nproxyman.sh
+   sudo bash install_docker_nproxyman.sh
+}
+
+oraclessh(){
    home="/home/slon"
-   echo (ls | grep key)
+   echo $(ls | grep key)
    privateKeyName=$(find . *.key)
    read -p 'Enter server IP: ' serverIP
 
@@ -126,25 +141,45 @@ prepareSSH(){
    echo "git clone https://github.com/ilopatenko/bash-collection"
    echo ""
    echo "./bash-collection/index.sh"
-  
 }
 
-firstCommands(){
+oracleFirstCommands(){
    sudo -i
    fallocate -l 2048M /root/swapfile && ls -lh /root/swapfile && chmod 600 /root/swapfile && mkswap /root/swapfile && swapon /root/swapfile && echo "/root/swapfile none swap sw 0 0" >> /etc/fstab
    sleep 1
 }
 
-netmakerServer(){
-   sudo wget -qO /root/nm-quick-interactive.sh https://raw.githubusercontent.com/gravitl/netmaker/master/scripts/nm-quick-interactive.sh && sudo chmod +x /root/nm-quick-interactive.sh && sudo /root/nm-quick-interactive.sh
+
+
+#####FINAL MENU
+finalMenuAnimated(){
+   printFinalMenu
    sleep 1
-}
-
-
-netmakerClient(){
-   sudo curl -sL 'https://apt.netmaker.org/gpg.key' | sudo tee /etc/apt/trusted.gpg.d/netclient.asc
-   sudo curl -sL 'https://apt.netmaker.org/debian.deb.txt' | sudo tee /etc/apt/sources.list.d/netclient.list
-   sudo apt update
-   sudo sudo apt install netclient -y
-   sudo ip -br -c a
+   ftl1=$ftl11
+   printFinalMenu
+   sleep 1
+   ftl2=$ftl12
+   printFinalMenu
+   sleep 1
+   ftl3=$ftl13
+   printFinalMenu
+   sleep 1
+   ftl4=$ftl14
+   printFinalMenu
+   sleep 1
+   ftl5=$ftl15
+   printFinalMenu
+   sleep 1
+   ftl6=$ftl16
+   printFinalMenu
+   sleep 1
+   ftl7=$ftl17
+   printFinalMenu
+   sleep 1
+   ftl8=$ftl18
+   printFinalMenu
+   sleep 1
+   ftl9=$ftl19
+   printFinalMenu
+   sleep 1
 }

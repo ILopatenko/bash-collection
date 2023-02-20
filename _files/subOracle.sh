@@ -16,11 +16,11 @@ oracleBranch(){
 
    sl23=${active}
    printOracleMenu
-   askOracleNettmakerServer
+   askOracleNetmakerServer
 
    sl24=${active}
    printOracleMenu
-   askOraclePrepareSSH
+   askOracleNetmakerClient
 
    sl25=${active}
    printOracleMenu

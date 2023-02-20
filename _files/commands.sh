@@ -135,7 +135,7 @@ oraclessh(){
    echo ""
    echo "ssh-add -D && ssh ubuntu@$serverIP"
    echo ""
-   echo "apt update && apt install git -y"
+   echo "sudo apt update && sudo apt install git -y"
    echo ""
    echo "git clone https://github.com/ilopatenko/bash-collection"
    echo ""

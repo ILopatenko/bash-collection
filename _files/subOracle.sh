@@ -24,7 +24,7 @@ oracleBranch(){
 
    sl25=${active}
    printOracleMenu
-   askOraclePrepareSSH
+   askOracleNginxServer
 }
 
 #ORACLE QUESTIONS
@@ -78,6 +78,21 @@ askOracleNetmakerClient(){
    else
       sl24=$skp
       echo -e "${skp}  NO. You don't want to install Netmaker Client... - let's go the next step ...${Drop}"
+      sleep 1
+   fi
+}
+
+askOracleNginxServer(){
+   if askQuestion "  2.5. Do you want to install Docker Stack (to setup NginX Server)? [y/n] "; then
+      echo -e "${don}  OK. You want to install Docker Stack (to setup NginX Server)...${Drop}"
+      sleep 1
+      echo -e "${don}  I'm going to use a greatt scriptt from https://opensourceisawesome.com/ ${Drop}"
+      sllep 1
+      dockerStack
+      sl25=$don
+   else
+      sl25=$skp
+      echo -e "${skp}  NO. You don't want to install Docker Stack (to setup NginX Server)... - let's go the next step ...${Drop}"
       sleep 1
    fi
 }

@@ -44,3 +44,13 @@ active=${YellowB}
 skp=${Red}
 don=${Green}
 prt=${Yellow}
+qstn=${Yellow}
+
+
+#ORACLE MENU LINES
+sl21=${wt}
+sl22=${wt}
+sl23=${wt}
+sl24=${wt}
+sl25=${wt}
+sl26=${wt}

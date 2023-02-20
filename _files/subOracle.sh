@@ -56,3 +56,15 @@ askOracleFirstCommands(){
    fi
 }
 
+askOracleNettmakerServer(){
+   if askQuestion "  2.3. Do you want to install Netmaker Server? [y/n] "; then
+      echo -e "${don}  OK. You want to install Netmaker Server...${Drop}"
+      sleep 1
+      oracleNetmakerServer
+      sl23=$don
+   else
+      sl23=$skp
+      echo -e "${skp}  NO. You don't want to install Netmaker Server... - let's go the next step ...${Drop}"
+      sleep 1
+   fi
+}

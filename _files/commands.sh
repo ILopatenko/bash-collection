@@ -147,6 +147,9 @@ oracleFirstCommands(){
    sleep 1
 }
 
+oracleNetmakerServer(){
+   sudo wget -qO /root/nm-quick-interactive.sh https://raw.githubusercontent.com/gravitl/netmaker/master/scripts/nm-quick-interactive.sh && sudo chmod +x /root/nm-quick-interactive.sh && sudo /root/nm-quick-interactive.sh
+}
 
 
 #####FINAL MENU

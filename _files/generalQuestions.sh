@@ -4,6 +4,7 @@
 source ./_files/iuMenus.sh
 source ./_files/commands.sh
 source ./_files/subOracle.sh
+source ./_files/subServer.sh
 
 
 askQuestion(){

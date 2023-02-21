@@ -25,6 +25,8 @@ oracleBranch(){
    sl25=${active}
    printOracleMenu
    askOracleNginxServer
+
+   sl2=${prt}
 }
 
 #ORACLE QUESTIONS

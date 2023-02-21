@@ -38,7 +38,7 @@ GrayB="\e[1;100m"
    #Menu Title (yellow)
    mt=${Yellow}
 
-   #Default CSS for list items (white)
+   #Default CSS for list items (white text)
    wt=${White}
 
 #MAIN MENU LINES
@@ -66,6 +66,14 @@ sl25=${wt}
 sl26=${wt}
 sl27=${wt}
 
+#SERVER MENU LINES
+sl41=${wt}
+sl42=${wt}
+sl43=${wt}
+sl44=${wt}
+sl45=${wt}
+sl46=${wt}
+sl47=${wt}
 
 
 #FINAL MENU

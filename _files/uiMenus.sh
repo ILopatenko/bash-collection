@@ -153,6 +153,26 @@ printOracleMenu(){
    echo -e "                                                  ${Drop}"
 }
 
+printServerMenu(){
+   clear -x
+   echo -e "${gbg}"
+   echo -e "                                                  "
+   echo -e "    ${fr}*****************************************${gbg}     "
+   echo -e "    ${fr}**${frb}                                     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}        ${mt}4. SERVER MENU:              ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}                                     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl41}  4.1. MAIN TOOLS           ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl42}  4.2. INSTALL NODEJS       ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl43}  4.3. CONNECT MY NFS       ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl44}  4.4. NETMAKER CLIENT      ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl45}  4.5. DOCKER STACK         ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl46}  X. RESERVED  ${frb}                  ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl47}  X. RESERVED  ${frb}                  ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}                                     ${fr}**${gbg}     "
+   echo -e "    ${fr}*****************************************${gbg}     "
+   echo -e "                                                  ${Drop}"
+}
+
 printFinalMenu(){
    clear -x
    echo -e "${gbg}"

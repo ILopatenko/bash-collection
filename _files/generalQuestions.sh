@@ -75,8 +75,7 @@ askServerQ(){
    if askQuestion "4. Do you want to setup your Ubuntu server? [y/n] "; then
       echo -e "${don}OK. You want to setup your Ubuntu server ...${Drop}"
       sleep 1
-      echo "Print Server main menu - and keep working on Server branch"
-      sleep 1
+      serverBranch
    else
       sl4=$skp
       echo -e "${skp}NO. You don't want to setup your Ubuntu server... - let's go the next step ...${Drop}"

@@ -5,6 +5,8 @@ source ./_files/uiMenus.sh
 source ./_files/commands.sh
 source ./_files/generalQuestions.sh
 
+printServerMenu
+exit
 
 sl1=${active}
 printMainMenu

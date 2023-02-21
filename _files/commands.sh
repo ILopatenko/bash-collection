@@ -160,6 +160,54 @@ oracleNetmakerClient(){
 }
 
 
+mainAppsInstall(){
+   sudo apt install openssh-server git nano wget tar htop nfs-common p7zip-full gpg -y
+}
+
+nodejsInstall(){
+   sudo curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash - && sudo apt-get install -y nodejs
+}
+
+nfs(){
+   echo -e "${LOG}"
+   if [ -d "/media/ryzen4ter" ]
+      then
+         echo "/media/ryzen4ter exists"
+      else
+         echo "/media/ryzen4ter does not exist - trying to create ..."
+         sudo mkdir /media/ryzen4ter
+         if [ -d "/media/ryzen4ter" ]
+            then
+               echo "/media/ryzen4ter was created!"
+            else
+               echo -e "${SKIP}"
+               echo "!ERROR! /media/ryzen4ter was not created"
+               echo -e "${LOG}"
+         fi
+   fi
+   if [ -d "/media/ryzen2ter" ]
+      then
+         echo "/media/ryzen2ter exists"
+      else
+         echo "/media/ryzen2ter does not exist - trying to create ..."
+         sudo mkdir /media/ryzen2ter
+         if [ -d "/media/ryzen2ter" ]
+            then
+               echo "/media/ryzen2ter was created!"
+            else
+               echo -e "${SKIP}"
+               echo "!ERROR! /media/ryzen2ter was nor created"
+               echo -e "${LOG}"
+         fi
+   fi
+
+   sudo echo "#AUTOMOUNT NFS SHARE trueNAS ryzen server" >> /etc/fstab
+   sudo echo "192.168.0.201:/mnt/ryzen2ter/dataSetRyzen2ter /media/ryzen2ter nfs defaults 0 0" >> /etc/fstab
+   sudo echo "192.168.0.201:/mnt/ryzen4ter/dataSetRyzen4ter /media/ryzen4ter nfs defaults 0 0" >> /etc/fstab
+
+echo -e "${li}"
+}
+
 #####FINAL MENU
 finalMenuAnimated(){
    printFinalMenu

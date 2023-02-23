@@ -215,18 +215,18 @@ nfs(){
                echo -e "${LOG}"
          fi
    fi
-   if [ -d "/media/ssdVideo" ]
+   if [ -d "/media/ssdMedia" ]
       then
-         echo "/media/ssdVideo exists"
+         echo "/media/ssdMedia exists"
       else
-         echo "/media/ssdVideo does not exist - trying to create ..."
-         sudo mkdir /media/ssdVideo
-         if [ -d "/media/ssdVideo" ]
+         echo "/media/ssdMedia does not exist - trying to create ..."
+         sudo mkdir /media/ssdMedia
+         if [ -d "/media/ssdMedia" ]
             then
-               echo "/media/ssdVideo was created!"
+               echo "/media/ssdMedia was created!"
             else
                echo -e "${SKIP}"
-               echo "!ERROR! /media/ssdVideo was not created"
+               echo "!ERROR! /media/ssdMedia was not created"
                echo -e "${LOG}"
          fi
    fi
@@ -234,8 +234,8 @@ nfs(){
    sudo echo "#AUTOMOUNT NFS SHARE trueNAS ryzen and proxmox servers" >> /etc/fstab
    sudo echo "192.168.0.201:/mnt/ryzen2ter/dataSetRyzen2ter /media/ryzen2ter nfs defaults 0 0" >> /etc/fstab
    sudo echo "192.168.0.201:/mnt/ryzen4ter/dataSetRyzen4ter /media/ryzen4ter nfs defaults 0 0" >> /etc/fstab
-   sudo echo "192.168.0.200:/mnt/ssd2terIT/ssd2terITdataSet ssdIT nfs defaults 0 0" >> /etc/fstab
-   sudo echo "192.168.0.200:/mnt/ssd2terVideo/ssd2terVideoDataSet /media/ssdVideo nfs defaults 0 0" >> /etc/fstab
+   sudo echo "192.168.0.200:/mnt/ssd2terIT/ssd2terITdataSet /media/ssdIT nfs defaults 0 0" >> /etc/fstab
+   sudo echo "192.168.0.200:/mnt/ssd2terVideo/ssd2terVideoDataSet /media/ssdMedia nfs defaults 0 0" >> /etc/fstab
 
 echo -e "${li}"
 }

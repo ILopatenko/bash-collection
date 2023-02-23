@@ -202,10 +202,10 @@ nfs(){
    fi
    if [ -d "/media/ssdIT" ]
       then
-         echo "/media/ryzen4ter exists"
+         echo "/media/ssdIT exists"
       else
-         echo "/media/ryzen4ter does not exist - trying to create ..."
-         sudo mkdir /media/ryzen4ter
+         echo "/media/ssdIT does not exist - trying to create ..."
+         sudo mkdir /media/ssdIT
          if [ -d "/media/ssdIT" ]
             then
                echo "/media/ssdIT was created!"

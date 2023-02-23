@@ -181,6 +181,27 @@ printServerMenu(){
    echo -e "                                                  ${Drop}"
 }
 
+
+printDockerMenu(){
+   clear -x
+   echo -e "${gbg}"
+   echo -e "                                                  "
+   echo -e "    ${fr}*****************************************${gbg}     "
+   echo -e "    ${fr}**${frb}                                     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}        ${mt}6. DOCKER MENU:              ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}                                     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl41}  6.1. WHOOGLE           ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl42}  6.2. INSTALL NODEJS       ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl43}  6.3. CONNECT MY NFS       ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl44}  6.4. NETMAKER CLIENT      ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl45}  6.5. DOCKER STACK         ${frb}     ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl46}  X. RESERVED  ${frb}                  ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}    ${sl47}  X. RESERVED  ${frb}                  ${fr}**${gbg}     "
+   echo -e "    ${fr}**${frb}                                     ${fr}**${gbg}     "
+   echo -e "    ${fr}*****************************************${gbg}     "
+   echo -e "                                                  ${Drop}"
+}
+
 printFinalMenu(){
    clear -x
    echo -e "${gbg}"

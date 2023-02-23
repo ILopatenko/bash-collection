@@ -200,10 +200,42 @@ nfs(){
                echo -e "${LOG}"
          fi
    fi
+   if [ -d "/media/ssdIT" ]
+      then
+         echo "/media/ryzen4ter exists"
+      else
+         echo "/media/ryzen4ter does not exist - trying to create ..."
+         sudo mkdir /media/ryzen4ter
+         if [ -d "/media/ssdIT" ]
+            then
+               echo "/media/ssdIT was created!"
+            else
+               echo -e "${SKIP}"
+               echo "!ERROR! /media/ssdIT was not created"
+               echo -e "${LOG}"
+         fi
+   fi
+   if [ -d "/media/ssdVideo" ]
+      then
+         echo "/media/ssdVideo exists"
+      else
+         echo "/media/ssdVideo does not exist - trying to create ..."
+         sudo mkdir /media/ssdVideo
+         if [ -d "/media/ssdVideo" ]
+            then
+               echo "/media/ssdVideo was created!"
+            else
+               echo -e "${SKIP}"
+               echo "!ERROR! /media/ssdVideo was not created"
+               echo -e "${LOG}"
+         fi
+   fi
 
-   sudo echo "#AUTOMOUNT NFS SHARE trueNAS ryzen server" >> /etc/fstab
+   sudo echo "#AUTOMOUNT NFS SHARE trueNAS ryzen and proxmox servers" >> /etc/fstab
    sudo echo "192.168.0.201:/mnt/ryzen2ter/dataSetRyzen2ter /media/ryzen2ter nfs defaults 0 0" >> /etc/fstab
    sudo echo "192.168.0.201:/mnt/ryzen4ter/dataSetRyzen4ter /media/ryzen4ter nfs defaults 0 0" >> /etc/fstab
+   sudo echo "192.168.0.200:/mnt/ssd2terIT/ssd2terITdataSet ssdIT nfs defaults 0 0" >> /etc/fstab
+   sudo echo "192.168.0.200:/mnt/ssd2terVideo/ssd2terVideoDataSet /media/ssdVideo nfs defaults 0 0" >> /etc/fstab
 
 echo -e "${li}"
 }

@@ -5,6 +5,7 @@ source ./_files/iuMenus.sh
 source ./_files/commands.sh
 source ./_files/subOracle.sh
 source ./_files/subServer.sh
+source ./_files/subPrivate.sh
 
 
 askQuestion(){
@@ -100,17 +101,31 @@ askDockerSttackQ(){
 
 #DOCKER APPS
 askDockerAppsQ(){
-   if askQuestion "5. Do you want to install Docker Stack (Docker, Docker-Compose, NginX, Portainer, Navidrome)? [y/n] "; then
-      echo -e "${don}OK. You want to install Docker Stack...${Drop}"
+   if askQuestion "6. Do you want to install Docker apps/services? [y/n] "; then
+      echo -e "${don}OK. You want to install Docker apps/services...${Drop}"
       sleep 1
       echo "Docker Apps main menu - and keep working on Docker Apps"
-      sleep 1
+      sl6=$prt
    else
-      sl5=$skp
+      sl6=$skp
       echo -e "${skp}NO. You don't want to install Docker Apps... - let's go the next step ...${Drop}"
       sleep 1
    fi
 }
+
+#PRIVATE SETTINGS
+askPrivateQ(){
+   if askQuestion "7. Do you want to apply some private settings? [y/n] "; then
+      echo -e "${don}OK. Let's do it!${Drop}"
+      sleep 1
+      privateBranch
+   else
+      sl5=$skp
+      echo -e "${skp}NO. Skipped${Drop}"
+      sleep 1
+   fi
+}
+
 
 
 

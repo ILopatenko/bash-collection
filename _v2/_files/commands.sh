@@ -272,3 +272,125 @@ finalMenuAnimated(){
    printFinalMenu
    sleep 1
 }
+
+
+
+
+
+
+
+
+
+
+
+
+prepareOracleSSH(){
+   home="/home/slon"
+   privateKeyName=$(ls | grep key)
+   read -p "Enter server IP: " serverIP
+
+
+   echo "Your workDir is $home"
+   echo "Your server IP is $serverIP"
+   echo "Your key is $privateKeyName"
+   sleep 1
+
+   #1 Folder /.ssh
+   #Check if $home/.ssh exists
+   echo ""
+   if [ -d $home"/.ssh" ]; then
+      #CASE when folder already exists 
+      echo -e "${Yellow}Folder $home"/.ssh" exists"
+   else
+      #CASE when folder does not already exists
+      echo -e "${Red}Folder $home"/.ssh" does not exist"
+      #Create a new folder $home/.ssh
+      echo -e "${Yellow}Try to create a new folder $home"/.ssh" ..."
+      sudo mkdir $home/.ssh/
+      #Check if a new folder was created
+      if [ -d $home"/.ssh" ]; then
+        echo -e "${Green}Folder $home"/.ssh" was created"
+      else
+        echo -e "${Red}ERROR! Can't create a folder!'"
+      fi
+   fi
+
+   #2 Rename and copy private server key to a new folder
+   #2.1 Check if a key exists
+   echo ""
+   if [ -f "$privateKeyName" ]; then 
+      #CASE a key exists in start folder
+      echo -e "${Green}The private key was found"
+      #2.2 copy and rename a key to .ssh folder
+      echo -e "${Yellow}Try to copy and rename a key file to $home"/.ssh" ..."
+      sudo cp $privateKeyName $home/.ssh/id_rsa_$serverIP
+      #2.3 check if a key was copied
+      if [ -f $home"/.ssh/id_rsa_"$serverIP ]; then
+         echo -e "${Green}The private key was copied and renamed"
+      else
+         echo -e "${Red}ERROR! Can't copy/rename a key file"
+      fi
+   else
+        echo -e "${Red}The private key was not found"
+   fi
+
+
+   #3 Create a config file in /.ssh and add all the information
+   #3.1 Check if a config file already exists
+   echo ""
+   if [ -f "$home/.ssh/config" ]; then
+      #CASE a config file exists
+      echo -e "${Green}Config file exists"
+   else
+      #CASE a config file DOES NOT exist
+      echo -e "${Red}Config file does not exist"
+      echo -e "${Yellow}Try to create a config file ... "
+      sudo touch $home/.ssh/config
+      if [ -f "$home/.ssh/config" ]; then
+         echo -e "${Green}Config file was created"
+      else 
+         echo -e "${Red}ERROR! CAN NOT CREATE CONFIG FILE"
+      fi
+   fi
+   sleep 1
+   #3.2 Add information to a config file
+   echo -e "${Yellow}"
+   echo -e "Try to add all the information to a config file ... "
+   echo -e "Host $serverIP" >> $home/.ssh/config
+   echo -e "HostName $serverIP" >> $home/.ssh/config
+   echo -e "User git" >> $home/.ssh/config
+   echo -e "IdentityFile $home/.ssh/id_rsa_$serverIP" >> $home/.ssh/config
+   echo -e "IdentitiesOnly yes" >> $home/.ssh/config
+
+   #4 Create a file known_hosts
+   #4.1 Check if a file known_hosts already exists
+   echo ""
+   if [ -f "$home/.ssh/known_hosts" ]; then
+      #CASE a file known_hosts exists
+      echo "known_hosts file exists"
+   else
+      #CASE a file known_hosts DOES NOT exist
+      echo -e "${Red}known_hosts file does not exist"
+      echo -e "${Yellow}Try to create a known_hosts file ... "
+      sudo touch $home/.ssh/known_hosts
+      if [ -f "$home/.ssh/known_hosts" ]; then
+         echo -e "${Green}known_hosts file was created"
+         sudo chmod 777 $home/.ssh/known_hosts
+      else 
+      echo -e "${Red}ERROR! CAN NOT CREATE known_hosts file"
+      fi
+   fi 
+   sleep 1
+   clear -x
+   echo "Open a new terminal and use these commands: "
+   echo ""
+   echo "ssh-add -D && ssh ubuntu@$serverIP"
+   echo ""
+   echo "sudo apt update && sudo apt install git -y"
+   echo ""
+   echo "git clone https://github.com/ilopatenko/bash-collection"
+   echo ""
+   echo "cd bash-collection && sudo bash index.sh"
+
+   askYesNoQuestionWithActions "" "Have you done all the seps?" exit 
+}

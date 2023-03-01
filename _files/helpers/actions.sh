@@ -27,7 +27,54 @@ generalTools(){
 
 ###ORACLE
 oracleConnectSSH(){
-   ssh-add -D && ssh ubuntu@"$serverIP" 
+
+   echo -e "${Yellow}"
+
+   privateKeyName=$(ls ./_files/keys/$service | grep key)
+   ssh -i ssh-key-2023-02-26.key ubuntu@155.248.210.125
+
+   runuser -l username -c 'ssh ubuntu@"$serverIP"' 
+}
+
+
+testConnection(){
+
+
+   echo -e "${Yellow}"
+   echo -e "Please choose the service that you want to connect/setup:"
+
+	select service in "Netmaker VPN Server" "NginX Reverse Proxy Server"; do
+	case $REPLY in
+		1)
+		echo -e "${Green}OK you want to prepare SSH connection using Netmaker private key"
+		serviceFolder="netmaker"
+		break
+		;;      
+		2)
+		echo -e "${Green}OK you want to prepare SSH connection using NginX private key"
+		serviceFolder="nginx"
+		break
+		;;
+		*) echo "invalid option $REPLY";;
+	esac
+	done
+   
+   echo -e "${Yellow}"
+   read -p "Enter server IP: " serverIP
+	echo -e "${Green}OK you want to connect to your ORACLE server using $serverIP IP address"
+   privateKeyName=$(ls ./_files/keys/$serviceFolder/ | grep key)
+	echo -e "${Green}OK it looks like you have $privateKeyName in keys/netmaker folder"
+   keyPath="./_files/keys/$serviceFolder/$privateKeyName"
+	echo -e "${Green}OK it looks like path to your private key is $keyPath"
+
+   chmod 400 $keyPath
+
+   ssh -i $keyPath ubuntu@$serverIP
+
+
+
+
+
 }
 
 oraclePrepareSSH(){
@@ -104,11 +151,11 @@ oraclePrepareSSH(){
    #3.2 Add information to a config file
    echo -e "${Yellow}"
    echo -e "Try to add all the information to a config file ... "
-   echo -e "Host $serverIP" >> $home/.ssh/config
-   echo -e "HostName $serverIP" >> $home/.ssh/config
-   echo -e "User git" >> $home/.ssh/config
-   echo -e "IdentityFile $home/.ssh/id_rsa_$serverIP" >> $home/.ssh/config
-   echo -e "IdentitiesOnly yes" >> $home/.ssh/config
+   sudo echo "Host $serverIP" >> $home/.ssh/config
+   sudo echo "HostName $serverIP" >> $home/.ssh/config
+   sudo echo "User git" >> $home/.ssh/config
+   sudo echo "IdentityFile $home/.ssh/id_rsa_$serverIP" >> $home/.ssh/config
+   sudo echo "IdentitiesOnly yes" >> $home/.ssh/config
 
    #4 Create a file known_hosts
    #4.1 Check if a file known_hosts already exists

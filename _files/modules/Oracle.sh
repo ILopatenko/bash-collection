@@ -31,7 +31,7 @@ Q26="install Docker Stack"
 
 #ORACLE MENU QUESTION MODULES
 QM21(){
-   askYesNoQuestionWithActions "1." "$Q21" oraclePrepareSSH
+   askYesNoQuestionWithActions "1." "$Q21" testConnection
 }
 QM22(){
    askYesNoQuestionWithActions "2." "$Q22" oracleSwap
